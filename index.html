@@ -312,6 +312,7 @@
     }
 
     .image-home {
+      --hero-nav-space: 72px;
       position: relative;
       min-height: 100vh;
       overflow: hidden;
@@ -322,30 +323,39 @@
 
     .image-home-bg {
       position: absolute;
-      inset: 0;
+      left: 0;
+      right: 0;
+      top: var(--hero-nav-space);
+      bottom: 0;
       z-index: -3;
       width: 100%;
-      height: 100%;
+      height: calc(100% - var(--hero-nav-space));
       object-fit: cover;
       object-position: center;
       filter: saturate(.96) contrast(1.04) brightness(.82);
-      transform: scale(1.015);
+      transform: none;
     }
 
     .image-home-overlay {
       position: absolute;
-      inset: 0;
+      left: 0;
+      right: 0;
+      top: var(--hero-nav-space);
+      bottom: 0;
       z-index: -2;
       background:
         radial-gradient(circle at 22% 42%, rgba(156,28,255,.16), transparent 34%),
         linear-gradient(90deg, rgba(7,7,7,.34) 0%, rgba(7,7,7,.18) 34%, rgba(7,7,7,.08) 68%, rgba(7,7,7,.28) 100%),
-        linear-gradient(to bottom, rgba(7,7,7,.36) 0%, transparent 22%, rgba(7,7,7,.32) 100%);
+        linear-gradient(to bottom, rgba(7,7,7,.24) 0%, transparent 22%, rgba(7,7,7,.32) 100%);
       pointer-events: none;
     }
 
     .image-home-grain {
       position: absolute;
-      inset: 0;
+      left: 0;
+      right: 0;
+      top: var(--hero-nav-space);
+      bottom: 0;
       z-index: -1;
       opacity: .12;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -1432,38 +1442,30 @@
     }
 
     @media (max-width: 980px) {
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
       .image-home {
+        --hero-nav-space: 70px;
         min-height: 100svh;
       }
 
       .image-home-bg {
-        object-position: 62% center;
+        object-position: center center;
+        transform: scale(1.02);
       }
 
-      .image-home-content {
-        width: min(100% - 32px, 720px);
-        min-height: 100svh;
-        padding: 112px 0 46px;
+      .image-home-overlay {
+        background:
+          radial-gradient(circle at 50% 42%, rgba(156,28,255,.14), transparent 36%),
+          linear-gradient(to bottom, rgba(7,7,7,.36), rgba(7,7,7,.08) 44%, rgba(7,7,7,.34));
       }
 
-      .image-home-content p {
-        max-width: 28ch;
-        font-size: .64rem;
-        line-height: 1.45;
-      }
-
-      .image-home-content h1 {
-        font-size: clamp(3.7rem, 18vw, 7rem);
-      }
-
+      .image-home-content,
       .image-home-actions {
-        flex-wrap: wrap;
-      }
-
-      .image-home-actions a {
-        min-width: 118px;
-        padding: 12px 18px;
-        font-size: .78rem;
+        display: none;
       }
 
       .generated-home {
@@ -1858,6 +1860,68 @@
     }
 
     @media (max-width: 520px) {
+      .site-nav {
+        padding: 10px 0;
+      }
+
+      .site-nav::before {
+        height: 66px;
+      }
+
+      .nav-inner {
+        width: calc(100% - 24px);
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 10px;
+        font-size: .58rem;
+      }
+
+      .nav-meta {
+        max-width: 130px;
+        font-size: .58rem;
+        line-height: 1.25;
+      }
+
+      .nav-year {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: inline-flex;
+        justify-self: end;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(247,243,223,.44);
+        color: var(--cream);
+        background: rgba(0,0,0,.2);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        font-size: .68rem;
+        font-weight: 900;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+
+      .image-home {
+        --hero-nav-space: 70px;
+        min-height: 100svh;
+      }
+
+      .image-home-bg {
+        height: 100%;
+        object-fit: cover;
+        object-position: 58% center;
+        transform: scale(1.08);
+      }
+
+      .image-home-grain {
+        opacity: .08;
+      }
+
       .skills-grid {
         grid-template-columns: 1fr;
       }
@@ -1927,6 +1991,400 @@
       .dark-work-showcase {
         height: calc(100svh * 8) !important;
         min-height: 100svh;
+      }
+    }
+
+    /* Final mobile bug fixes */
+    @media (max-width: 768px) {
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      body {
+        -webkit-text-size-adjust: 100%;
+      }
+
+      .cursor-dot {
+        display: none !important;
+      }
+
+      .site-nav {
+        padding: 10px 0 !important;
+        mix-blend-mode: normal !important;
+      }
+
+      .site-nav::before {
+        height: 70px !important;
+        background: linear-gradient(to bottom, rgba(5,5,5,.74), rgba(5,5,5,.36), transparent) !important;
+        backdrop-filter: blur(14px) saturate(1.15) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(1.15) !important;
+      }
+
+      .nav-inner {
+        width: calc(100% - 24px) !important;
+        display: grid !important;
+        grid-template-columns: 1fr auto !important;
+        align-items: center !important;
+        gap: 12px !important;
+      }
+
+      .nav-meta {
+        max-width: 170px !important;
+        font-size: .58rem !important;
+        line-height: 1.25 !important;
+        letter-spacing: .08em !important;
+      }
+
+      .nav-links,
+      .nav-year {
+        display: none !important;
+      }
+
+      .menu-button {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        justify-self: end !important;
+        min-height: 36px !important;
+        padding: 8px 15px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(247,243,223,.42) !important;
+        background: rgba(0,0,0,.28) !important;
+        color: var(--cream) !important;
+        font-size: .68rem !important;
+        font-weight: 900 !important;
+        letter-spacing: .12em !important;
+        text-transform: uppercase !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
+
+      .mobile-menu {
+        z-index: 999 !important;
+        min-height: 100svh !important;
+        height: 100svh !important;
+        overflow-y: auto !important;
+      }
+
+      .image-home,
+      .generated-home,
+      .coded-home {
+        min-height: 100svh !important;
+        height: 100svh !important;
+      }
+
+      .image-home-bg {
+        top: var(--hero-nav-space) !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: calc(100% - var(--hero-nav-space)) !important;
+        object-fit: cover !important;
+        object-position: 58% center !important;
+        transform: none !important;
+      }
+
+      .image-home-overlay {
+        background:
+          radial-gradient(circle at 50% 42%, rgba(156,28,255,.16), transparent 36%),
+          linear-gradient(to bottom, rgba(7,7,7,.44), rgba(7,7,7,.08) 46%, rgba(7,7,7,.44)) !important;
+      }
+
+      .about-me-card-section,
+      .agency-experience,
+      .skills-section,
+      .contact-footer {
+        min-height: auto !important;
+        overflow-x: hidden !important;
+      }
+
+      .about-me-card-section {
+        padding: 92px 16px 56px !important;
+      }
+
+      .about-card-wrap {
+        width: 100% !important;
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+      }
+
+      .id-card {
+        width: min(100%, 340px) !important;
+        justify-self: center !important;
+        grid-template-columns: 112px 1fr !important;
+        gap: 16px !important;
+        padding: 24px 18px !important;
+        transform: rotate(-1.2deg) !important;
+      }
+
+      .id-photo {
+        width: 112px !important;
+      }
+
+      .id-info h2 {
+        font-size: clamp(1.9rem, 10vw, 3rem) !important;
+        margin-bottom: 14px !important;
+      }
+
+      .id-grid {
+        gap: 8px !important;
+      }
+
+      .barcode {
+        width: 112px !important;
+        height: 26px !important;
+      }
+
+      .about-copy-card {
+        max-height: none !important;
+        width: 100% !important;
+        padding: 24px 18px !important;
+        border-radius: 22px !important;
+      }
+
+      .about-copy-card h3 {
+        font-size: clamp(1.7rem, 9vw, 2.6rem) !important;
+        line-height: 1.04 !important;
+      }
+
+      .dark-work-showcase {
+        height: auto !important;
+        min-height: auto !important;
+        overflow: hidden !important;
+        contain: none !important;
+      }
+
+      .dark-work-showcase .work-grid-bg,
+      .dark-work-showcase .work-shell {
+        position: relative !important;
+        top: auto !important;
+        height: auto !important;
+        min-height: auto !important;
+      }
+
+      .work-shell {
+        grid-template-columns: 1fr !important;
+        padding: 86px 16px 54px !important;
+        gap: 26px !important;
+      }
+
+      .work-reel-area {
+        min-height: 420px !important;
+      }
+
+      .work-sidebar {
+        width: 100% !important;
+      }
+
+      .work-links {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+
+      .agency-experience {
+        display: block !important;
+      }
+
+      .experience-stage {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 82px 16px 56px !important;
+      }
+
+      .experience-section-title,
+      .experience-icons,
+      .experience-content,
+      .experience-pill-track {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+      }
+
+      .experience-section-title {
+        margin-bottom: 28px !important;
+      }
+
+      .experience-icons {
+        display: none !important;
+      }
+
+      .experience-pill-track {
+        width: 100% !important;
+        display: flex !important;
+        gap: 12px !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        padding: 4px 0 18px !important;
+        scroll-snap-type: x mandatory !important;
+      }
+
+      .experience-pill {
+        flex: 0 0 92px !important;
+        height: 260px !important;
+        scroll-snap-align: center !important;
+      }
+
+      .experience-pill.active {
+        flex-basis: 140px !important;
+      }
+
+      .experience-content {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        margin-top: 18px !important;
+      }
+
+      .experience-copy-panel {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        max-width: none !important;
+      }
+
+      .skills-section {
+        padding: 76px 16px 56px !important;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+
+      .skill-card {
+        min-height: 126px !important;
+      }
+
+      .contact-footer {
+        min-height: 100svh !important;
+        padding: 86px 18px 64px !important;
+      }
+
+      .footer-contact-card h2 {
+        font-size: clamp(3rem, 16vw, 5.2rem) !important;
+        line-height: .92 !important;
+      }
+
+      .footer-contact-card p {
+        font-size: .95rem !important;
+      }
+
+      .footer-sticky-keys {
+        right: 0 !important;
+        gap: 8px !important;
+      }
+
+      .sticky-key {
+        width: 42px !important;
+        height: 126px !important;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav-meta {
+        max-width: 118px !important;
+        font-size: .52rem !important;
+      }
+
+      .id-card {
+        grid-template-columns: 96px 1fr !important;
+        width: min(100%, 310px) !important;
+      }
+
+      .id-photo,
+      .barcode {
+        width: 96px !important;
+      }
+
+      .id-grid strong {
+        font-size: .6rem !important;
+      }
+
+      .id-grid span {
+        font-size: .52rem !important;
+      }
+    }
+
+    /* Letter-spacing fixes for cleaner headings and labels */
+    h1,
+    h2,
+    h3,
+    .about-copy-card h3,
+    .work-link-btn,
+    .experience-title,
+    .skills-heading h2,
+    .footer-contact-card h2 {
+      letter-spacing: -0.045em !important;
+      word-spacing: 0.04em !important;
+      font-kerning: normal;
+      text-rendering: geometricPrecision;
+    }
+
+    .about-kicker,
+    .experience-section-title,
+    .skills-heading > p:first-child,
+    .work-kicker,
+    .nav-links,
+    .nav-meta,
+    .nav-year,
+    .mono {
+      letter-spacing: 0.14em !important;
+      word-spacing: 0.04em !important;
+    }
+
+    .about-copy-card h3 {
+      line-height: 1.08 !important;
+      max-width: 900px;
+    }
+
+    .work-link-btn {
+      line-height: 1.06 !important;
+      letter-spacing: -0.035em !important;
+    }
+
+    .experience-title {
+      line-height: 0.94 !important;
+      letter-spacing: -0.055em !important;
+    }
+
+    .skills-heading h2 {
+      line-height: 0.92 !important;
+      letter-spacing: -0.06em !important;
+      word-spacing: 0.02em !important;
+    }
+
+    .skill-card h3 {
+      letter-spacing: -0.025em !important;
+      word-spacing: 0.02em !important;
+      line-height: 1.15 !important;
+    }
+
+    .footer-contact-card h2 {
+      letter-spacing: -0.055em !important;
+      word-spacing: 0.03em !important;
+      line-height: 0.95 !important;
+    }
+
+    @media (max-width: 768px) {
+      h1,
+      h2,
+      h3,
+      .about-copy-card h3,
+      .experience-title,
+      .skills-heading h2,
+      .footer-contact-card h2 {
+        letter-spacing: -0.04em !important;
+        word-spacing: 0.03em !important;
+      }
+
+      .work-link-btn {
+        letter-spacing: -0.025em !important;
       }
     }
   </style>
