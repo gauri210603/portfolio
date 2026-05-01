@@ -7,7 +7,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -35,13 +35,15 @@
       background: var(--black);
       color: var(--cream);
       font-family: Inter, system-ui, sans-serif;
+      font-weight: 400;
       overflow-x: hidden;
     }
 
     h1,
     h2,
     h3 {
-      font-family: Sora, system-ui, sans-serif;
+      font-family: Manrope, system-ui, sans-serif;
+      font-weight: 500;
     }
 
     code,
@@ -1091,12 +1093,14 @@
     .skills-inner {
       position: relative;
       z-index: 2;
+      width: min(100% - 56px, 1440px);
+      margin: 0 auto;
     }
 
     .skills-heading {
       max-width: 760px;
-      margin: 0 auto clamp(28px, 3.5vw, 46px);
-      text-align: center;
+      margin: 0 0 clamp(28px, 3.5vw, 46px);
+      text-align: left;
     }
 
     .skills-heading > p:first-child {
@@ -1115,6 +1119,7 @@
       line-height: .86;
       letter-spacing: -.065em;
       text-transform: uppercase;
+      text-align: left;
     }
 
     .skills-heading h2 span {
@@ -1165,7 +1170,7 @@
       place-items: center;
       border-radius: 13px;
       color: #fff;
-      font-family: Sora, system-ui, sans-serif;
+      font-family: Manrope, system-ui, sans-serif;
       font-size: 1.05rem;
       font-weight: 900;
       background: linear-gradient(135deg, rgba(156,28,255,.95), rgba(247,243,223,.18));
@@ -1263,21 +1268,15 @@
       position: relative;
       min-height: 100vh;
       display: grid;
-      place-items: center;
+      grid-template-columns: minmax(280px, .85fr) minmax(380px, .95fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 90px);
       overflow: hidden;
-      padding: 64px 28px;
+      padding: 96px clamp(42px, 7vw, 140px);
       background:
-        linear-gradient(115deg, rgba(6,6,8,.92), rgba(26,18,35,.72) 42%, rgba(8,8,10,.94)),
-        repeating-linear-gradient(118deg,
-          rgba(255,255,255,.02) 0 6px,
-          rgba(188,112,255,.16) 7px 10px,
-          rgba(25,25,31,.28) 11px 18px,
-          rgba(255,255,255,.05) 19px 21px,
-          transparent 22px 34px),
-        radial-gradient(ellipse at 28% 20%, rgba(222,160,255,.55), transparent 28%),
-        radial-gradient(ellipse at 62% 52%, rgba(137,46,255,.52), transparent 34%),
-        radial-gradient(ellipse at 78% 76%, rgba(205,205,214,.34), transparent 30%),
-        #09090d;
+        radial-gradient(circle at 18% 24%, rgba(156,28,255,.24), transparent 30%),
+        radial-gradient(circle at 72% 72%, rgba(247,243,223,.12), transparent 28%),
+        linear-gradient(135deg, #08080b, #141018 48%, #070707);
       color: #f7f3df;
     }
 
@@ -1288,12 +1287,12 @@
       background:
         repeating-linear-gradient(118deg,
           transparent 0 12px,
-          rgba(255,255,255,.18) 13px 14px,
-          rgba(169,85,255,.22) 15px 17px,
+          rgba(255,255,255,.1) 13px 14px,
+          rgba(169,85,255,.2) 15px 17px,
           transparent 18px 32px),
-        linear-gradient(118deg, transparent 0%, rgba(255,255,255,.24) 38%, transparent 48%, rgba(127,77,180,.18) 62%, transparent 78%);
-      filter: blur(14px);
-      opacity: .64;
+        linear-gradient(118deg, transparent 0%, rgba(255,255,255,.14) 38%, transparent 48%, rgba(127,77,180,.18) 62%, transparent 78%);
+      filter: blur(16px);
+      opacity: .48;
       transform: rotate(0deg) scale(1.04);
       mix-blend-mode: screen;
       pointer-events: none;
@@ -1304,11 +1303,11 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(0,0,0,.58), transparent 36%, rgba(0,0,0,.5)),
-        radial-gradient(circle at 50% 50%, transparent 0 42%, rgba(0,0,0,.52) 100%),
-        rgba(12,10,16,.22);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+        linear-gradient(90deg, rgba(0,0,0,.52), transparent 36%, rgba(0,0,0,.45)),
+        radial-gradient(circle at 50% 50%, transparent 0 42%, rgba(0,0,0,.48) 100%),
+        rgba(12,10,16,.18);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       pointer-events: none;
     }
 
@@ -1317,71 +1316,252 @@
       display: none;
     }
 
-    .footer-contact-card {
+    .contact-phone-art {
       position: relative;
       z-index: 4;
-      width: min(100%, 760px);
-      text-align: center;
-      transform: translateY(-8px);
+      width: min(100%, 500px);
+      height: min(64vh, 560px);
+      justify-self: center;
+      filter: drop-shadow(0 34px 80px rgba(156,28,255,.28));
     }
 
-    .footer-contact-card h2 {
-      margin: 0 0 42px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(3.2rem, 6.2vw, 7rem);
-      font-weight: 400;
-      line-height: .92;
-      letter-spacing: -.075em;
-      text-transform: none;
-      text-align: center;
-      transform: none;
+    .contact-phone-art::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: min(90%, 430px);
+      height: min(68%, 390px);
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 36% 30%, rgba(255,255,255,.18), transparent 18%),
+        linear-gradient(145deg, rgba(212,108,255,.92), rgba(72,24,96,.96) 62%, rgba(7,7,10,.98));
+      transform: translate(-50%, -50%) rotate(-3deg);
+      box-shadow:
+        inset 18px 18px 42px rgba(255,255,255,.12),
+        inset -26px -34px 48px rgba(0,0,0,.34),
+        0 28px 80px rgba(0,0,0,.3);
     }
 
-    .footer-contact-card p {
-      margin: 0 auto;
-      max-width: 620px;
-      color: rgba(255,255,255,.86);
-      font-size: clamp(1.05rem, 1.55vw, 1.45rem);
-      line-height: 1.42;
-      letter-spacing: -.035em;
+    .contact-phone-art::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: min(74%, 350px);
+      height: min(50%, 280px);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(7,7,10,.26);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transform: translate(-50%, -50%) rotate(-3deg);
     }
 
-    .footer-contact-details {
-      display: grid;
-      gap: 8px;
-      margin-top: 50px;
-      color: rgba(255,255,255,.9);
-      font-size: clamp(1.05rem, 1.45vw, 1.35rem);
-      line-height: 1.25;
-      letter-spacing: -.035em;
-    }
-
-    .footer-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 22px;
-      margin-top: 44px;
-    }
-
-    .footer-buttons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 96px;
-      padding: 8px 16px;
-      border: 1px solid rgba(255,255,255,.8);
+    .phone-handle {
+      position: absolute;
+      left: 50%;
+      top: 22%;
+      z-index: 3;
+      width: min(72%, 350px);
+      height: 86px;
       border-radius: 999px;
-      color: rgba(255,255,255,.95);
-      font-size: .92rem;
-      font-weight: 700;
-      letter-spacing: -.04em;
-      transition: background .25s ease, color .25s ease, transform .25s ease;
+      background:
+        radial-gradient(circle at 18% 42%, rgba(255,255,255,.22), transparent 14%),
+        radial-gradient(circle at 82% 42%, rgba(255,255,255,.14), transparent 16%),
+        linear-gradient(90deg, #efc5ff, #9c1cff 44%, #31123f 100%);
+      transform: translateX(-50%) rotate(-10deg);
+      box-shadow:
+        inset 12px 10px 24px rgba(255,255,255,.18),
+        inset -18px -14px 28px rgba(0,0,0,.32),
+        0 22px 54px rgba(0,0,0,.28);
     }
 
-    .footer-buttons a:hover {
-      background: #f7f3df;
-      color: #183000;
+    .phone-handle::before,
+    .phone-handle::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background:
+        repeating-radial-gradient(circle at center, transparent 0 7px, rgba(0,0,0,.2) 8px 10px),
+        radial-gradient(circle at 34% 30%, #fff2ff, #d46cff 42%, #6f20c9 100%);
+      transform: translateY(-50%);
+      box-shadow: inset -10px -12px 24px rgba(0,0,0,.24);
+    }
+
+    .phone-handle::before { left: -30px; }
+    .phone-handle::after { right: -30px; }
+
+    .phone-head {
+      display: none;
+    }
+
+    .phone-cord {
+      position: absolute;
+      left: 37%;
+      bottom: 3%;
+      z-index: 2;
+      width: 86vw;
+      max-width: 860px;
+      height: 92px;
+      border-bottom: 14px solid #9c1cff;
+      border-radius: 0 0 0 70%;
+      transform: translateX(-8%) rotate(-2deg);
+      opacity: .82;
+      filter: drop-shadow(0 18px 32px rgba(156,28,255,.22));
+    }
+
+    .phone-cord::after {
+      content: "";
+      position: absolute;
+      left: 110px;
+      bottom: -22px;
+      width: 180px;
+      height: 46px;
+      border: 9px solid #d46cff;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      border-radius: 50%;
+      transform: rotate(-8deg);
+    }
+
+    .phone-cord::before {
+      content: "Let’s talk";
+      position: absolute;
+      left: 50%;
+      top: -170px;
+      z-index: 4;
+      transform: translateX(-50%) rotate(-3deg);
+      color: rgba(255,255,255,.9);
+      font-family: Manrope, system-ui, sans-serif;
+      font-size: clamp(2.4rem, 5vw, 5.4rem);
+      font-weight: 500;
+      letter-spacing: -.07em;
+      white-space: nowrap;
+    }
+
+    .contact-form-card {
+      position: relative;
+      z-index: 4;
+      width: min(100%, 560px);
+      justify-self: center;
+      padding: clamp(28px, 3.8vw, 54px);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 30px;
+      background: rgba(247,243,223,.08);
+      box-shadow: 0 32px 100px rgba(0,0,0,.28);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .contact-kicker {
+      margin-bottom: 14px;
+      color: rgba(212,108,255,.92);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .contact-form-card h2 {
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: clamp(2.2rem, 4.4vw, 5rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+
+    .contact-intro {
+      max-width: 440px;
+      margin-bottom: 28px;
+      color: rgba(247,243,223,.7);
+      font-size: .98rem;
+      line-height: 1.55;
+    }
+
+    .contact-preview-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-preview-form label {
+      display: grid;
+      gap: 7px;
+    }
+
+    .contact-preview-form span {
+      color: rgba(247,243,223,.62);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .contact-preview-form input,
+    .contact-preview-form textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      background: rgba(247,243,223,.12);
+      color: #fff;
+      padding: 13px 14px;
+      font: inherit;
+      outline: none;
+      transition: border-color .25s ease, background .25s ease;
+    }
+
+    .contact-preview-form textarea {
+      resize: vertical;
+      min-height: 122px;
+    }
+
+    .contact-preview-form input:focus,
+    .contact-preview-form textarea:focus {
+      border-color: rgba(212,108,255,.72);
+      background: rgba(247,243,223,.16);
+    }
+
+    .contact-preview-form button {
+      justify-self: end;
+      margin-top: 2px;
+      border: 0;
+      border-radius: 10px;
+      padding: 13px 28px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-2));
+      color: #fff;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      cursor: pointer;
+      box-shadow: 0 18px 42px rgba(156,28,255,.26);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .contact-preview-form button:hover {
       transform: translateY(-2px);
+      box-shadow: 0 24px 52px rgba(156,28,255,.34);
+    }
+
+    .contact-success {
+      display: none;
+      margin-top: 8px;
+      color: rgba(247,243,223,.72);
+      font-size: .86rem;
+    }
+
+    .contact-success.show {
+      display: block;
+    }
+
+    .hidden-contact-frame {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+      border: 0;
     }
 
     .footer-sticky-keys {
@@ -1837,7 +2017,37 @@
 
       .contact-footer {
         min-height: 100svh;
+        grid-template-columns: 1fr;
+        gap: 30px;
         padding: 92px 18px 74px;
+      }
+
+      .contact-phone-art {
+        width: min(100%, 300px);
+        height: 310px;
+      }
+
+      .phone-handle {
+        width: min(78%, 250px);
+        height: 62px;
+      }
+
+      .phone-handle::before,
+      .phone-handle::after {
+        width: 68px;
+        height: 68px;
+      }
+
+      .phone-handle::before { left: -20px; }
+      .phone-handle::after { right: -20px; }
+
+      .phone-cord {
+        height: 54px;
+        border-bottom-width: 10px;
+      }
+
+      .contact-form-card {
+        padding: 28px 20px;
       }
 
       .footer-sticky-keys {
@@ -2620,21 +2830,37 @@
   </main>
 
   <footer class="footer contact-footer" id="contact">
-
-    <div class="footer-contact-card">
-      <h2>Let’s work together</h2>
-      <p>I’m always looking for new projects and collaborations.<br />If you have a project in mind, or just want to say hello,<br />please get in touch.</p>
-
-      <div class="footer-contact-details">
-        <span>Gauri Nagar</span>
-        <a href="mailto:gaurinagar21@gmail.com">gaurinagar21@gmail.com</a>
-      </div>
-
-      <div class="footer-buttons">
-        <a href="https://www.behance.net/gaurinagar1" target="_blank" rel="noreferrer">Behance</a>
-        <a href="#">LinkedIn</a>
-      </div>
+    <div class="contact-phone-art" aria-hidden="true">
+      <div class="phone-head top"></div>
+      <div class="phone-handle"></div>
+      <div class="phone-head bottom"></div>
+      <div class="phone-cord"></div>
     </div>
+
+    <div class="contact-form-card">
+      <p class="contact-kicker mono">Contact / Collaboration</p>
+      <h2>Need support?</h2>
+      <p class="contact-intro">Have a project, collaboration, or design brief in mind? Send the details through the form and I’ll get back to you.</p>
+
+      <form class="contact-preview-form" action="https://forms.gle/mH1MnxDynjYMrx6V6" method="get" target="contactHiddenFrame" onsubmit="handleContactSubmit(event)">
+        <label>
+          <span>Name and surname</span>
+          <input type="text" name="name" autocomplete="name" />
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" />
+        </label>
+        <label>
+          <span>Please enter the details of your request.</span>
+          <textarea name="message" rows="5"></textarea>
+        </label>
+        <button type="submit">Submit</button>
+        <p class="contact-success" id="contactSuccess">Thank you — your request has been sent.</p>
+      </form>
+      <iframe class="hidden-contact-frame" name="contactHiddenFrame" title="Hidden contact form submission"></iframe>
+    </div>
+
     <div class="footer-sticky-keys mono" aria-label="Quick contact links">
       <a class="sticky-key email-key" href="mailto:gaurinagar21@gmail.com">
         <span>Email</span>
@@ -2944,6 +3170,15 @@
 
     const portraitImage = document.querySelector('.portrait-card');
     const footerTitle = document.querySelector('.footer h2');
+
+    function handleContactSubmit(event) {
+      const form = event.currentTarget;
+      const success = document.getElementById('contactSuccess');
+      window.setTimeout(() => {
+        if (success) success.classList.add('show');
+        form.reset();
+      }, 650);
+    }
 
     function scrollMotion() {
       const scrollY = window.scrollY;
